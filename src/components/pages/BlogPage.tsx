@@ -33,11 +33,11 @@ export default function Blog() {
       ? posts
       : posts.filter((post) => post.category === selectedCategory);
 
-  if (loading) return <div>Carregando posts...</div>;
-  if (error) return <div className="text-red-500 text-center">Erro: {error}</div>;
+  if (loading) return <div className="pt-24 text-center">Carregando posts...</div>;
+  if (error) return <div className="pt-24 text-red-500 text-center">Erro: {error}</div>;
 
   return (
-    <section className="py-20 px-4 md:px-8" style={{ background: "#F1F5F9" }}>
+    <section className="pt-24 py-20 px-4 md:px-8" style={{ background: "#F1F5F9" }}>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -157,4 +157,3 @@ export default function Blog() {
     </section>
   );
 }
-
