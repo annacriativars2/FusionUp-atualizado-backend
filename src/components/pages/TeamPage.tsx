@@ -33,7 +33,7 @@ const TeamPage = () => {
     {
       id: 2,
       name: "Leandra Marcely",
-      role: "Diretora de Social Media & Fundador",
+      role: "Diretora de Social Media & Fundadora",
       experience: "8 anos de experiência",
       bio: "Com background em Comunicação Social e especialização em Marketing Digital, Ana é responsável por todas as estratégias de mídias sociais da FusionUp. Sua abordagem analítica combinada com criatividade resultou em campanhas premiadas e cases de sucesso para diversos segmentos.",
       expertise: ["Gestão de Mídias Sociais", "Marketing de Conteúdo", "Análise de Dados", "Gestão de Comunidade"],
@@ -51,7 +51,7 @@ const TeamPage = () => {
     {
       id: 4,
       name: "Anna",
-      role: "Diretora de Design & Fundador",
+      role: "Diretora de Design & Fundadora",
       experience: "7 anos de experiência",
       bio: "Designer premiada com formação em Design Gráfico e especialização em Design de Experiência do Usuário, Juliana traz uma abordagem centrada no usuário para todos os projetos. Sua capacidade de traduzir necessidades de negócio em interfaces intuitivas e atraentes é fundamental para o sucesso dos projetos.",
       expertise: ["Design de Interfaces", "Identidade Visual", "Motion Design", "Design Thinking"],

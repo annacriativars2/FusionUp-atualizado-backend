@@ -25,6 +25,8 @@ import UserCreatePage from './components/pages/admin/UserCreatePage';
 import UserEditPage from './components/pages/admin/UserEditPage';
 import ConfigurationListPage from './components/pages/admin/ConfigurationListPage';
 import ConfigurationCreatePage from './components/pages/admin/ConfigurationCreatePage';
+import ServiceDetailPage from "./components/pages/ServiceDetailPage";
+import ProjectDetailPage from "./components/pages/ProjectDetailPage"; // ✅ ADICIONADO
 
 const NotFound = () => (
   <div className="text-center p-8">
@@ -36,20 +38,14 @@ const NotFound = () => (
   </div>
 );
 
-// Layout para páginas administrativas
 const AdminLayout = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-gray-100">
-    {children}
-  </div>
+  <div className="min-h-screen bg-gray-100">{children}</div>
 );
 
-// Layout para páginas públicas
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen flex flex-col">
     <Header />
-    <main className="flex-grow">
-      {children}
-    </main>
+    <main className="flex-grow">{children}</main>
     <Footer />
     <Scheduling />
   </div>
@@ -78,137 +74,36 @@ function App() {
 
   return (
     <Routes>
-      {/* Rotas públicas */}
-      <Route
-        path="/"
-        element={
-          <PublicLayout>
-            <Hero />
-            <Services />
-            <FeaturedProjects />
-            <Testimonials />
-            <CallToAction />
-          </PublicLayout>
-        }
-      />
+      {/* Páginas públicas */}
+      <Route path="/" element={<PublicLayout><Hero /><Services /><FeaturedProjects /><Testimonials /><CallToAction /></PublicLayout>} />
       <Route path="/contato" element={<PublicLayout><ContactPage /></PublicLayout>} />
       <Route path="/sobre" element={<PublicLayout><AboutPage /></PublicLayout>} />
       <Route path="/equipe" element={<PublicLayout><TeamPage /></PublicLayout>} />
       <Route path="/servicos" element={<PublicLayout><Services /></PublicLayout>} />
+      <Route path="/servicos/:slug" element={<PublicLayout><ServiceDetailPage /></PublicLayout>} />
+      <Route path="/projeto/:id" element={<PublicLayout><ProjectDetailPage /></PublicLayout>} /> {/* ✅ NOVA ROTA AQUI */}
       <Route path="/blog" element={<PublicLayout><BlogPage /></PublicLayout>} />
 
-      {/* Redirecionar /dashboard para /admin/dashboard */}
+      {/* Redirecionamento */}
       <Route path="/dashboard" element={<Navigate to="/admin/dashboard" replace />} />
 
-      {/* Rotas administrativas protegidas */}
-      <Route
-        path="/admin/dashboard"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><DashboardPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/posts"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><PostListPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/posts/create"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><PostCreatePage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/posts/edit/:slug"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><PostEditPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/users"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><UserListPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/users/create"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><UserCreatePage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/users/edit/:userId"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><UserEditPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/configurations"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><ConfigurationListPage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
-      <Route
-        path="/admin/configurations/create"
-        element={
-          isAuthenticated ? (
-            <AdminLayout><ConfigurationCreatePage /></AdminLayout>
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
+      {/* Rotas administrativas */}
+      <Route path="/admin/dashboard" element={isAuthenticated ? <AdminLayout><DashboardPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/posts" element={isAuthenticated ? <AdminLayout><PostListPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/posts/create" element={isAuthenticated ? <AdminLayout><PostCreatePage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/posts/edit/:slug" element={isAuthenticated ? <AdminLayout><PostEditPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/users" element={isAuthenticated ? <AdminLayout><UserListPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/users/create" element={isAuthenticated ? <AdminLayout><UserCreatePage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/users/edit/:userId" element={isAuthenticated ? <AdminLayout><UserEditPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/configurations" element={isAuthenticated ? <AdminLayout><ConfigurationListPage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
+      <Route path="/admin/configurations/create" element={isAuthenticated ? <AdminLayout><ConfigurationCreatePage /></AdminLayout> : <Navigate to="/admin/login" replace />} />
 
-      {/* Rotas públicas administrativas */}
+      {/* Login/Registro */}
       <Route path="/login" element={<AdminLogin />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/admin/register" element={<RegisterPage />} />
-
-      {/* Redirecionamento raiz admin */}
-      <Route
-        path="/admin"
-        element={
-          isAuthenticated ? (
-            <Navigate to="/admin/dashboard" replace />
-          ) : (
-            <Navigate to="/admin/login" replace />
-          )
-        }
-      />
+      <Route path="/admin" element={isAuthenticated ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/admin/login" replace />} />
 
       {/* 404 */}
       <Route path="*" element={<PublicLayout><NotFound /></PublicLayout>} />
@@ -217,4 +112,3 @@ function App() {
 }
 
 export default App;
-

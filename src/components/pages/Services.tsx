@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   delay: number;
+  slug: string;
 }
 
-const ServiceCard = ({ icon, title, description, delay }: ServiceCardProps) => {
+const ServiceCard = ({ icon, title, description, delay, slug }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div 
-      className={`bg-white rounded-xl shadow-md p-6 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl animate-fade-in-up`}
+      className="bg-white rounded-xl shadow-md p-6 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl animate-fade-in-up"
       data-animation-delay={delay}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -23,19 +26,19 @@ const ServiceCard = ({ icon, title, description, delay }: ServiceCardProps) => {
       </div>
       <h3 className="text-xl font-bold mb-3 text-gray-800">{title}</h3>
       <p className="text-gray-600 mb-4">{description}</p>
-      <a 
-        href="#" 
+      <button
+        onClick={() => navigate(`/servicos/${slug}`)}
         className={`inline-flex items-center text-[#0066B3] font-medium transition-all duration-300 ${isHovered ? 'translate-x-1' : ''}`}
       >
         Saiba mais <ArrowRight className="ml-1 h-4 w-4" />
-      </a>
+      </button>
     </div>
   );
 };
 
 const Services = () => {
   return (
-    <section className="py-16 bg-[#E6F0F7]">
+    <section className="pt-28 pb-14 bg-[#E6F0F7]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nossos Serviços</h2>
@@ -56,6 +59,7 @@ const Services = () => {
             title="Criação de Sites"
             description="Desenvolvemos sites responsivos e intuitivos para potencializar seu negócio no ambiente digital, com foco em experiência do usuário e performance."
             delay={100}
+            slug="criacao-de-sites"
           />
 
           <ServiceCard 
@@ -69,6 +73,7 @@ const Services = () => {
             title="Mídias Sociais"
             description="Gerenciamos suas redes sociais com estratégias personalizadas, conteúdo engajador e análise de resultados para maximizar sua presença digital."
             delay={200}
+            slug="midias-sociais"
           />
 
           <ServiceCard 
@@ -82,6 +87,7 @@ const Services = () => {
             title="Design Gráfico"
             description="Criamos identidades visuais e materiais gráficos que comunicam a essência da sua marca, com designs modernos, criativos e profissionais."
             delay={300}
+            slug="design-grafico"
           />
         </div>
       </div>
