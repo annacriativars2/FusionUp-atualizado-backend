@@ -29,19 +29,24 @@ const PostListPage = () => {
   const loadPosts = async () => {
     setLoading(true);
     setError('');
-    
+
     const result = await postService.getMyPosts();
-    if (result.success) {
+
+    console.log('Resposta do getMyPosts:', result);
+
+    if (result.success && Array.isArray(result.data)) {
       setPosts(result.data);
     } else {
+      setPosts([]);
       setError(result.message || 'Erro ao carregar posts');
     }
+
     setLoading(false);
   };
 
   const handleDelete = async (slug: string) => {
     if (!confirm('Tem certeza que deseja deletar este post?')) return;
-    
+
     const result = await postService.deletePost(slug);
     if (result.success) {
       setPosts(posts.filter(post => post.slug !== slug));
@@ -53,8 +58,8 @@ const PostListPage = () => {
   const handleTogglePublish = async (slug: string) => {
     const result = await postService.togglePublish(slug);
     if (result.success) {
-      setPosts(posts.map(post => 
-        post.slug === slug 
+      setPosts(posts.map(post =>
+        post.slug === slug
           ? { ...post, is_published: !post.is_published }
           : post
       ));
@@ -184,4 +189,3 @@ const PostListPage = () => {
 };
 
 export default PostListPage;
-

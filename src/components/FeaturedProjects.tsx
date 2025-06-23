@@ -26,19 +26,19 @@ const FeaturedProjects = () => {
       id: 1,
       title: 'Redesign de E-commerce',
       category: 'web',
-      image: '/images/redesignbellamoda.png',
+      image: '/images/redesignbellamoda.jpg',
     },
     {
       id: 2,
       title: 'Campanha de Mídia Social',
       category: 'social',
-      image: '/project2.jpg',
+      image: '/images/midias-sociais.jpg',
     },
     {
       id: 3,
       title: 'Identidade Visual',
       category: 'design',
-      image: '/project3.jpg',
+      image: '/images/Identidade-Visual.jpg',
     }
   ];
 
