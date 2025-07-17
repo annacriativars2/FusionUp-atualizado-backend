@@ -64,14 +64,10 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-bold text-gray-800 mb-4">Contato</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-[#0066B3] mt-0.5 mr-2 flex-shrink-0" />
-                <span className="text-gray-600">Rua Araçuai 491 - MG</span>
-              </li>
+            <ul className="space-y-3">      
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-[#0066B3] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">(11) 9999-9999</span>
+                <span className="text-gray-600">(31) 9999-9999</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-[#0066B3] mr-2 flex-shrink-0" />

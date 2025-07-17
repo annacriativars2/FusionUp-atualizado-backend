@@ -15,30 +15,28 @@ const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: "Ana Silva",
-      company: "Empresa ABC",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel felis consequat, venenatis massa, porttitor neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-      rating: 5,
-      image: "/testimonial1.jpg"
-    },
-    {
-      id: 2,
-      name: "Carlos Oliveira",
-      company: "Startup XYZ",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel felis consequat, venenatis massa, porttitor neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-      rating: 4,
-      image: "/testimonial2.jpg"
-    },
-    {
-      id: 3,
-      name: "Patrícia Santos",
-      company: "Empresa 123",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel felis consequat, venenatis massa, porttitor neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-      rating: 5,
-      image: "/testimonial3.jpg"
-    }
+  {
+  id: 1,
+    name: "Juliana Ferreira",
+    company: "Studio Pixel",
+    text: "A equipe da Fusion Up entendeu exatamente o que eu precisava. O resultado ficou incrível e super profissional. Recomendo de olhos fechados.",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Marcos Andrade",
+    company: "NeoDigital Tech",
+    text: "O atendimento é impecável e o site ficou muito acima das expectativas. Nunca foi tão fácil ter presença online!",
+    rating: 4
+  },
+  {
+    id: 3,
+    name: "Camila Rocha",
+    company: "Bella Moda",
+    text: "Com o novo design, nosso Instagram bombou! Os materiais ficaram lindos, modernos e com a nossa cara.",
+    rating: 5
+  },
+    
   ];
 
   useEffect(() => {
@@ -99,16 +97,7 @@ const Testimonials = () => {
             <div className="absolute -top-6 -right-6 w-12 h-12 bg-[#4D9FD6] rounded-full opacity-70"></div>
             <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#E6F0F7] rounded-full"></div>
             
-            <div className="flex flex-col md:flex-row gap-8 items-center">
-              {/* Client Image */}
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#E6F0F7] shadow-md flex-shrink-0">
-                <img 
-                  src={testimonials[activeIndex].image || "/default-avatar.jpg"} 
-                  alt={testimonials[activeIndex].name} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
+            <div className="flex flex-col items-center text-center">
               {/* Testimonial Content */}
               <div className="flex-1">
                 <div className="flex mb-3">

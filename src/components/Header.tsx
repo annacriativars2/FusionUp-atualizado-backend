@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Twitter, Facebook, Instagram } from 'lucide-react';
 
-// Define os nomes das redes como tipo literal
 const socialNetworks = ['Twitter', 'Facebook', 'Instagram'] as const;
 type SocialNetwork = typeof socialNetworks[number];
 
-// Mapeia os ícones com tipagem segura
 const socialIcons: Record<SocialNetwork, JSX.Element> = {
-  Twitter: <Twitter className="w-4 h-4" />,
   Facebook: <Facebook className="w-4 h-4" />,
   Instagram: <Instagram className="w-4 h-4" />,
 };
@@ -23,16 +20,15 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-[#F0F0F2] py-4'
-      }`}
-    >
+    <header className={`fixed w-full z-50 transition-all duration-300 backdrop-blur-md ${
+  isScrolled
+    ? 'bg-white/90 shadow-md py-2'
+    : 'bg-white/30 py-6'
+}`}>
       <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
         <a href="/" className="flex items-center space-x-2">
-          <img src="/images/fusionup.png" alt="Logo" className="h-16 w-auto" />
+          <img src="/images/fusionup.png" alt="Logo" className="h-36 md:h-40 w-auto transition-all duration-300" />
         </a>
 
         {/* Navegação desktop */}
@@ -90,6 +86,7 @@ const Header = () => {
             <a href="/servicos" className="block text-gray-800 hover:text-[#0066B3] transition-colors">Nossos Serviços</a>
             <a href="/blog" className="block text-gray-800 hover:text-[#0066B3] transition-colors">Blog</a>
             <a href="/contato" className="block bg-[#0066B3] text-white px-4 py-2 rounded-md hover:bg-[#004D86] transition-colors text-center">Fale Conosco</a>
+
             {/* Ícones sociais mobile */}
             <div className="flex items-center space-x-4 pt-2">
               {socialNetworks.map((network) => (
