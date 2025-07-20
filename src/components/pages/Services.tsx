@@ -38,8 +38,12 @@ const ServiceCard = ({ icon, title, description, delay, slug }: ServiceCardProps
 
 const Services = () => {
   return (
+<<<<<<< HEAD
     // pt-40 garante que o conteúdo não seja sobreposto pelo header fixo
     <section className="pt-40 pb-14 bg-[#E6F0F7]">
+=======
+    <section className="pt-28 pb-14 bg-[#E6F0F7]">
+>>>>>>> f32a0313d11930b47d9a675ae5d53c1e7cbb7135
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Nossos Serviços</h2>

@@ -7,7 +7,10 @@ type SocialNetwork = typeof socialNetworks[number];
 const socialIcons: Record<SocialNetwork, JSX.Element> = {
   Facebook: <Facebook className="w-4 h-4" />,
   Instagram: <Instagram className="w-4 h-4" />,
+<<<<<<< HEAD
   Twitter: <Twitter className="w-4 h-4" />,
+=======
+>>>>>>> f32a0313d11930b47d9a675ae5d53c1e7cbb7135
 };
 
 const Header = () => {
@@ -21,6 +24,7 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+<<<<<<< HEAD
 
   return (
     <header
@@ -36,12 +40,26 @@ const Header = () => {
             alt="Logo da FusionUp"
             className="h-20 md:h-28 w-auto transition-all duration-300"
           />
+=======
+  return (
+    <header className={`fixed w-full z-50 transition-all duration-300 backdrop-blur-md ${
+  isScrolled
+    ? 'bg-white/90 shadow-md py-2'
+    : 'bg-white/30 py-6'
+}`}>
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
+        <a href="/" className="flex items-center space-x-2">
+          <img src="/images/fusionup.png" alt="Logo" className="h-36 md:h-40 w-auto transition-all duration-300" />
+>>>>>>> f32a0313d11930b47d9a675ae5d53c1e7cbb7135
         </a>
 
         {/* Navegação desktop */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/" className="text-gray-800 hover:text-[#0066B3] transition-colors">Home</a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f32a0313d11930b47d9a675ae5d53c1e7cbb7135
           <div className="relative group">
             <button className="flex items-center text-gray-800 hover:text-[#0066B3] transition-colors">
               Sobre Nós <ChevronDown className="ml-1 h-4 w-4" />
@@ -51,7 +69,10 @@ const Header = () => {
               <a href="/equipe" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#E6F0F7] hover:text-[#0066B3]">Nossa Equipe</a>
             </div>
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f32a0313d11930b47d9a675ae5d53c1e7cbb7135
           <a href="/servicos" className="text-gray-800 hover:text-[#0066B3] transition-colors">Nossos Serviços</a>
           <a href="/blog" className="text-gray-800 hover:text-[#0066B3] transition-colors">Blog</a>
           <a href="/contato" className="bg-[#0066B3] text-white px-6 py-2 rounded-md hover:bg-[#004D86] transition-colors">Fale Conosco</a>
